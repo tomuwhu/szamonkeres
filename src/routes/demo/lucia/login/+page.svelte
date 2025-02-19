@@ -18,6 +18,13 @@
 		<input name='username' />
 	</div>
 	<div class="ui divider"></div>
+	{#if !login}
+		<div class="ui input">
+			<div class="ui label">Név</div>
+			<input type='text' name='name' />
+		</div>
+		<div class="ui divider"></div>
+	{/if}
 	<div class="ui input">
 		<div class="ui label">Jelszó</div>
 		<input type='password' name='password' />

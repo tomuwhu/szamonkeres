@@ -4,8 +4,8 @@
 	let { data } = $props();
 </script>
 
-<h1>Hi, {data.user.username}!</h1>
-<p>Your user ID is {data.user.id}.</p>
+<h1>Sikeresesen bejelentkezett</h1>
+<p>Bejelentkezve: {data.user.name}</p>
 <form method='post' action='?/logout' use:enhance>
-	<button>Sign out</button>
+	<button class="ui red button">Sign out</button>
 </form>

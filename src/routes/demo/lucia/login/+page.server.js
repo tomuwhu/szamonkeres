@@ -55,6 +55,7 @@ export const actions = {
 	register: async (event) => {
 		const formData = await event.request.formData();
 		const username = formData.get('username');
+		const name = formData.get('name');
 		const password = formData.get('password');
 
 		if (!validateUsername(username)) {
@@ -74,8 +75,7 @@ export const actions = {
 		});
 
 		try {
-			await db.insert(table.user).values({ id: userId, username, passwordHash });
-
+			await db.insert(table.user).values({ id: userId, username, name, passwordHash });
 			const sessionToken = auth.generateSessionToken();
 			const session = await auth.createSession(sessionToken, userId);
 			auth.setSessionTokenCookie(event, sessionToken, session.expiresAt);
