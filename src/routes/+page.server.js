@@ -1,5 +1,1 @@
-export function load(event) {
-    return {
-        user: event.locals.user
-    }
-}
+export const load = event => ({user: event.locals.user})
