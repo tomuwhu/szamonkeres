@@ -9,7 +9,6 @@
     ]
     afterNavigate(() => {
 		path = $page.url.pathname
-        console.log(path)
   	})
 </script>
 <div class="ui black inverted pointing menu">
