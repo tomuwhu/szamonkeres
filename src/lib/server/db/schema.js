@@ -1,23 +1,23 @@
-import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
+import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core'
 
 export const user = sqliteTable('user', {
-    id: text('id').primaryKey(),
+    id: text().primaryKey(),
     name: text(),
-    username: text('username').notNull().unique(),
+    username: text().notNull().unique(),
     passwordHash: text('password_hash').notNull()
-});
+})
 
 export const session = sqliteTable("session", {
-    id: text('id').primaryKey(),
+    id: text().primaryKey(),
     userId: text('user_id').notNull().references(() => user.id),
     expiresAt: integer('expires_at', { mode: 'timestamp' }).notNull()
-});
+})
 
 export const tools = sqliteTable("tools", {
-    id: text('id').primaryKey(),
-    title: text('title').notNull(),
-    description: text('description').notNull(),
-    image: text('image').notNull(),
-    serialnum: text('link').notNull(),
-    user_id: text('user_id').notNull().references(() => user.id),
+    id: text().primaryKey(),
+    title: text().notNull(),
+    description: text().notNull(),
+    image: text().notNull(),
+    serialnum: text().notNull(),
+    user_id: text().notNull().references(() => user.id),
 })
