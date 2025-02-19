@@ -1,14 +1,18 @@
 <script>
-    let { children } = $props()
+    let { children, data } = $props()
+    let user = $state(data.user)
     import { page } from '$app/stores'
     import { afterNavigate } from '$app/navigation'
 	var path = $state($page.url.pathname)
-    let menu = [
+    let menu = $derived([
         {felirat: "Kezdőoldal", link: "/"},
-        {felirat: "Login / Register / Logout", link: "/demo/lucia"}
-    ]
+        {   felirat: user?.id ? "Kijelentkezés": "Bejelentkezés / Regisztráció", 
+            link: "/demo/lucia"
+        }
+    ])
     afterNavigate(() => {
 		path = $page.url.pathname
+        user = data.user
   	})
 </script>
 <div class="ui black inverted pointing menu">
