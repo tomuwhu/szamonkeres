@@ -1,2 +1,10 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script>
+    const { data } = $props()
+    let user = $state(data.user)
+</script>
+<h1>Céges eszköz nyilvántartó program</h1>
+{#if user}
+    <p>Bejelentkezve: {user.name}</p>
+{:else}
+    <a href="/demo/lucia">Bejelentkezés</a>
+{/if}
