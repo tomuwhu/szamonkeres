@@ -49,7 +49,7 @@
     </thead>
     <tbody>
         {#each data.toolslist as tool}
-        <tr class="{kepnyitva === tool.tools.id ? 'active' : ''}" 
+        <tr class="ez {kepnyitva === tool.tools.id ? 'active' : ''}" 
         onclick="{() => kepnyitva=kepnyitva!==tool.tools.id?tool.tools.id:0}">
             <td>{tool.tools.title}</td>
             <td>{tool.tools.description}</td>
@@ -67,6 +67,9 @@
     </tbody>
 </table>
 <style>
+    tr.ez:hover {
+        background-color: lightcyan;
+    }
     tr.active td {
         background-color: lightcoral;
     }
