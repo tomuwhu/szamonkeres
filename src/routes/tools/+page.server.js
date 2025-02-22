@@ -17,6 +17,16 @@ export const load = async (event) => {
 }
 
 export const actions = {
+    "torles": async (event) => {
+        const formData = await event.request.formData();
+        const tool_id = formData.get('id');
+        try {
+            await db.delete(table.tools).where(eq(table.tools.id, tool_id)).returning();
+        } catch (e) {
+            console.log(e)
+        }
+        return redirect(302, '/tools')
+    },
     "ujeszkoz": async (event) => {  
         const formData = await event.request.formData();
         const tool_id = formData.get('id');

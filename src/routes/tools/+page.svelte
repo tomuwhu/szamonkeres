@@ -3,7 +3,6 @@
   let urlap = $state(0);
   let kepnyitva = $state(0);
   let edittool = $state({});
-  console.log(data.userlist);
 </script>
 
 <h1>Eszközök ({data.user?.name})</h1>
@@ -64,29 +63,33 @@
     {#each data.toolslist as tool}
       <tr
         class="ez {kepnyitva === tool.tools.id ? 'active' : ''}"
-        onclick={() =>
-          (kepnyitva = kepnyitva !== tool.tools.id ? tool.tools.id : 0)}
+        onclick={() => {
+          if (urlap !== 0) return
+          kepnyitva = kepnyitva !== tool.tools.id ? tool.tools.id : 0
+        }}
       >
         <td>{tool.tools?.title}</td>
         <td>{tool.tools?.description}</td>
         <td>{tool.tools?.serialnum}</td>
         <td>{tool.user?.name}</td>
-        <td
-          ><span
+        <td>
+          <!-- svelte-ignore a11y_click_events_have_key_events -->
+          <!-- svelte-ignore a11y_no_static_element_interactions -->
+          <button class="edit"
             onclick={() => {
               urlap = 2;
               edittool = tool;
             }}
-            class="edit">✍</span
-          >
-          <span onclick={() => {
-              console.log(edittool);
-            }}
-            class="edit">🗑</span>
-          </td
-        >
+            >✍</button>
+          <!-- svelte-ignore a11y_click_events_have_key_events -->
+          <!-- svelte-ignore a11y_no_static_element_interactions -->
+          <form class="delform" action="?/torles" method="POST">
+            <input type="hidden" name="id" value={tool.tools.id} />
+            <button class="edit">🗑</button>
+          </form>
+        </td>
       </tr>
-      {#if urlap == 0 && kepnyitva === tool.tools.id}
+      {#if kepnyitva === tool.tools.id}
         <tr>
           <td colspan="5" class="center">
             <img src={tool.tools.image} alt={tool.tools.description} />
@@ -98,6 +101,9 @@
 </table>
 
 <style>
+  form.delform {
+    display: inline;
+  }
   tr.ez:hover {
     background-color: lightcyan;
   }
@@ -129,10 +135,10 @@
   tr.cica th {
     background-color: rgb(128, 201, 240);
   }
-  span.edit:hover {
+  button.edit:hover {
     text-shadow: 1px 1px 4px black;
   }
-  span.edit {
+  button.edit {
     cursor: pointer;
     font-size: 30px;
   }
