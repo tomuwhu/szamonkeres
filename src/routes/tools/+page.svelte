@@ -39,13 +39,22 @@
     </form>
 {/if}
 <table class="ui table">
-    {#each data.toolslist as tool}
+    <thead>
+        <tr>
+            <th>Megnevezés</th>
+            <th>Leírás</th>
+            <th>Sorozatszám</th>
+        </tr>
+    </thead>
+    <tbody>
+        {#each data.toolslist as tool}
         <tr>
             <td>{tool.title}</td>
             <td>{tool.description}</td>
             <td>{tool.serialnum}</td>
         </tr>    
     {/each}
+    </tbody>
 </table>
 <style>
     input, select {
