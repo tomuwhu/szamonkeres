@@ -1,6 +1,8 @@
 <script>
     const { data } = $props()
     let urlap = $state(0)
+    console.log(data.toolslist)
+    
 </script>
 <h1>Eszközök ({data.user?.name})</h1>
 {#if urlap === 0}
@@ -36,7 +38,15 @@
         <button class="ui green small button">Mentés</button>
     </form>
 {/if}
-
+<table class="ui table">
+    {#each data.toolslist as tool}
+        <tr>
+            <td>{tool.title}</td>
+            <td>{tool.description}</td>
+            <td>{tool.serialnum}</td>
+        </tr>    
+    {/each}
+</table>
 <style>
     input, select {
         width: 300px;

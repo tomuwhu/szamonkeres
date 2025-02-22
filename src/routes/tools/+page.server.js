@@ -2,10 +2,11 @@ import { redirect } from '@sveltejs/kit';
 import { db } from '$lib/server/db'
 import * as table from '$lib/server/db/schema'
 export const load = async (event) => {
+    var toolslist = await db.select().from(table.tools)
     if (!event.locals.user) {
         return redirect(302, '/demo/lucia/login')
     }
-    return { user: event.locals.user }
+    return { user: event.locals.user, toolslist }
 }
 
 export const actions = {
@@ -17,7 +18,6 @@ export const actions = {
         const serialnum = formData.get('serialnum');
         const userId = event.locals.user.id;
         try {
-            console.log(title, description, image, serialnum, userId);
             await db.insert(table.tools).values({ title, description, image, serialnum, user_id: userId }).returning();
         } catch (e) {
             console.log(e)
