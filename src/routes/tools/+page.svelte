@@ -18,6 +18,7 @@
   >
   <hr />
   <form action="?/ujeszkoz" method="POST">
+    <input type="hidden" name="id" value={edittool.tools?.id || "-"} />
     <div class="ui input">
       <div class="ui label">Megnevezés</div>
       <input type="text" name="title" value={edittool.tools?.title} />
@@ -75,15 +76,19 @@
             onclick={() => {
               urlap = 2;
               edittool = tool;
-              console.log(edittool);
             }}
             class="edit">✍</span
-          ></td
+          >
+          <span onclick={() => {
+              console.log(edittool);
+            }}
+            class="edit">🗑</span>
+          </td
         >
       </tr>
       {#if urlap == 0 && kepnyitva === tool.tools.id}
         <tr>
-          <td colspan="3" class="center">
+          <td colspan="5" class="center">
             <img src={tool.tools.image} alt={tool.tools.description} />
           </td>
         </tr>
