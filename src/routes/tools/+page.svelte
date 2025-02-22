@@ -40,7 +40,7 @@
 {/if}
 <table class="ui table">
     <thead>
-        <tr>
+        <tr class="cica">
             <th>Megnevezés</th>
             <th>Leírás</th>
             <th>Sorozatszám</th>
@@ -74,6 +74,7 @@
         text-align: center;
     }
     tr {
+        user-select: none;
         cursor: pointer;
     }
     img {
@@ -89,5 +90,8 @@
     form {
         display: inline-block;
         width: 400px;
+    }
+    tr.cica th {
+        background-color: rgb(128, 201, 240);
     }
 </style>
