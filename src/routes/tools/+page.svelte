@@ -8,9 +8,10 @@
 {/if}
 {#if urlap === 1}
 <button class="ui blue small button" onclick={() => urlap=0}>Űrlap bezárása (mentés nélkül)</button>
-    <form action="?/ujeszkoz" method="POST">
+<hr>
+<form action="?/ujeszkoz" method="POST">
         <div class="ui input">
-            <div class="ui label">Szöveg</div>
+            <div class="ui label">Megnevezés</div>
             <input type="text" name="title" />
         </div>
         <div class="ui input">
@@ -18,17 +19,34 @@
             <input type="text" name="description" />
         </div>
         <div class="ui input">
-            <div class="ui label">Kepek</div>
+            <div class="ui label">Kép link</div>
             <input type="text" name="image" />
         </div>
         <div class="ui input">
-            <div class="ui label">Számítószám</div>
+            <div class="ui label">Sorozatszám</div>
             <input type="text" name="number" />
         </div>
         <div class="ui input">
             <div class="ui label">Felhasználó</div>
-            <input type="text" name="user" />
+            <select class="ui dropdown" name="user">
+                <option value={data.user.id}>{data.user.name}</option>
+            </select>
         </div>
+        <div class="ui divider"></div>
         <button class="ui green small button">Mentés</button>
     </form>
 {/if}
+
+<style>
+    input, select {
+        width: 300px;
+    }
+    div.label {
+        width: 100px;
+        text-align: left;
+    }
+    form {
+        display: inline-block;
+        width: 400px;
+    }
+</style>
