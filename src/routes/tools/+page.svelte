@@ -48,7 +48,7 @@
     <tbody>
         {#each data.toolslist as tool}
         <tr class="{kepnyitva === tool.id ? 'active' : ''}" 
-        onclick="{() => kepnyitva=kepnyitva?0:tool.id}">
+        onclick="{() => kepnyitva=kepnyitva!==tool.id?tool.id:0}">
             <td>{tool.title}</td>
             <td>{tool.description}</td>
             <td>{tool.serialnum}</td>
