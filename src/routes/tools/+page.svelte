@@ -47,14 +47,15 @@
     </thead>
     <tbody>
         {#each data.toolslist as tool}
-        <tr onclick="{() => kepnyitva=kepnyitva?0:tool.id}">
+        <tr class="{kepnyitva === tool.id ? 'active' : ''}" 
+        onclick="{() => kepnyitva=kepnyitva?0:tool.id}">
             <td>{tool.title}</td>
             <td>{tool.description}</td>
             <td>{tool.serialnum}</td>
         </tr>
         {#if kepnyitva === tool.id}
         <tr>
-            <td colspan="3">
+            <td colspan="3" class="center">
                 <img src="{tool.image}" alt="{tool.description}">
             </td>
         </tr>
@@ -63,11 +64,17 @@
     </tbody>
 </table>
 <style>
+    tr.active td {
+        background-color: lightcoral;
+    }
+    td.center {
+        text-align: center;
+    }
     tr {
         cursor: pointer;
     }
     img {
-        height: 200px;
+        height: 500px;
     }
     input, select {
         width: 300px;
