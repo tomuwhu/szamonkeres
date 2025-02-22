@@ -1,5 +1,6 @@
 <script>
     const { data } = $props()
+    console.log(data.toolslist);
     let urlap = $state(0)
     let kepnyitva = $state(0)    
 </script>
@@ -43,15 +44,17 @@
             <th>Megnevezés</th>
             <th>Leírás</th>
             <th>Sorozatszám</th>
+            <th>Kinél van</th>
         </tr>
     </thead>
     <tbody>
         {#each data.toolslist as tool}
         <tr class="{kepnyitva === tool.id ? 'active' : ''}" 
         onclick="{() => kepnyitva=kepnyitva!==tool.id?tool.id:0}">
-            <td>{tool.title}</td>
-            <td>{tool.description}</td>
-            <td>{tool.serialnum}</td>
+            <td>{tool.tools.title}</td>
+            <td>{tool.tools.description}</td>
+            <td>{tool.tools.serialnum}</td>
+            <td>{tool.user.name}</td>
         </tr>
         {#if kepnyitva === tool.id}
         <tr>

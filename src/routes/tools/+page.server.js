@@ -1,8 +1,11 @@
 import { redirect } from '@sveltejs/kit';
 import { db } from '$lib/server/db'
+import { eq } from 'drizzle-orm'
 import * as table from '$lib/server/db/schema'
 export const load = async (event) => {
-    var toolslist = await db.select().from(table.tools)
+    var toolslist = await db.select()
+        .from(table.tools)
+        .leftJoin(table.user, eq(table.user.id, table.tools.user_id)).all()
     if (!event.locals.user) {
         return redirect(302, '/demo/lucia/login')
     }
