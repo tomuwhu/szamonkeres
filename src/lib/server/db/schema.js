@@ -14,7 +14,7 @@ export const session = sqliteTable("session", {
 })
 
 export const tools = sqliteTable("tools", {
-    id: text().primaryKey(),
+    id: integer('id').primaryKey(),
     title: text().notNull(),
     description: text().notNull(),
     image: text().notNull(),
