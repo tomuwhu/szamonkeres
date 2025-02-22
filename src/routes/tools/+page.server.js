@@ -17,10 +17,10 @@ export const actions = {
         const serialnum = formData.get('serialnum');
         const userId = event.locals.user.id;
         try {
+            console.log(title, description, image, serialnum, userId);
             await db.insert(table.tools).values({ title, description, image, serialnum, user_id: userId }).returning();
         } catch (e) {
             console.log(e)
-            
         }
         return redirect(302, '/tools')
     }

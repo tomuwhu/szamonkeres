@@ -24,7 +24,7 @@
         </div>
         <div class="ui input">
             <div class="ui label">Sorozatszám</div>
-            <input type="text" name="number" />
+            <input type="text" name="serialnum" />
         </div>
         <div class="ui input">
             <div class="ui label">Felhasználó</div>
