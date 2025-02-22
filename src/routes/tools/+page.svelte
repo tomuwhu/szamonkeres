@@ -49,17 +49,17 @@
     </thead>
     <tbody>
         {#each data.toolslist as tool}
-        <tr class="{kepnyitva === tool.id ? 'active' : ''}" 
-        onclick="{() => kepnyitva=kepnyitva!==tool.id?tool.id:0}">
+        <tr class="{kepnyitva === tool.tools.id ? 'active' : ''}" 
+        onclick="{() => kepnyitva=kepnyitva!==tool.tools.id?tool.tools.id:0}">
             <td>{tool.tools.title}</td>
             <td>{tool.tools.description}</td>
             <td>{tool.tools.serialnum}</td>
             <td>{tool.user.name}</td>
         </tr>
-        {#if kepnyitva === tool.id}
+        {#if kepnyitva === tool.tools.id}
         <tr>
             <td colspan="3" class="center">
-                <img src="{tool.image}" alt="{tool.description}">
+                <img src="{tool.tools.image}" alt="{tool.tools.description}">
             </td>
         </tr>
         {/if}
