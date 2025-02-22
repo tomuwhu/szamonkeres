@@ -9,7 +9,7 @@
 {#if urlap === 0}
   <button
     class="ui green small button"
-    onclick={() => ((urlap = 1), (edittool = {}))}>Uj eszköz</button
+    onclick={() => ((urlap = 1), (edittool = {}))}>Új eszköz</button
   >
 {:else}
   <button class="ui blue small button" onclick={() => (urlap = 0)}
