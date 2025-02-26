@@ -9,7 +9,6 @@ export const load = async (event) => {
     var userlist = await db.select({ id: table.user.id, name: table.user.name })
         .from(table.user)
         .all()
-    console.log(userlist);
     if (!event.locals.user) {
         return redirect(302, '/demo/lucia/login')
     }
